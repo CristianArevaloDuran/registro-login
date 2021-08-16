@@ -66,3 +66,45 @@
     box-shadow: 0 0 0 30px inset white !important;
     font-size: 20px;
 }
+
+/*Mensaje*/
+
+.mensaje {
+    width: 70%;
+    height: 6vh;
+    margin: 10px 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    transition: opacity .25s ease;
+}
+
+.desvanecer {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.mensaje p {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+    padding: 0 0 0 20px;
+    margin-top: 0 !important;
+}
+
+.mensaje .boton {
+    font-size: 30px;
+    color: #ffffff;
+    cursor: pointer;
+    padding: 0 20px 0 0;
+}
+
+.ok {
+    background-color: #53c426;
+    color: #ffffff;
+}
+
+.bad {
+    background-color: red;
+    color: #ffffff;
+}

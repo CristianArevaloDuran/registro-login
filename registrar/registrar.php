@@ -25,8 +25,16 @@
 
             if(empty($password) || empty($confirm_password)) {
                 $mensaje_password = "Escriba una contraseña";
-                if($password != $confirm_password) {
-                    $mensaje_coinicide = "Las contraseñas no coinciden";
+            } elseif($password != $confirm_password) {
+                $mensaje_coinicide = "Las contraseñas no coinciden";
+            } elseif(!empty($nombre) && !empty($email) && !empty($password) && !empty($confirm_password)) {
+                $password = password_hash($_POST["password"], PASSWORD_BCRYPT); 
+                $registro = "INSERT INTO login (nombre, email, contraseña) VALUES ('$nombre', '$email', '$password')";
+                $query = mysqli_query($conexion, $registro);
+                if($query) {
+                    $mensaje_registro = "Registro satisfactorio"; 
+                } else {
+                    $mensaje_error = "Error al registrar";
                 }
             }
         }
@@ -36,6 +44,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -92,9 +101,25 @@
                         <p><?= $mensaje_coinicide; ?></p>
                     <?php
                 }
+                if(isset($mensaje_registro)) {
+                    ?>
+                        <div class="mensaje ok">
+                            <p><?= $mensaje_registro; ?></p>
+                            <a class="boton"><i class="fas fa-times"></i></a>
+                        </div>
+                    <?php
+                }
+                if(isset($mensaje_error)) {
+                    ?>
+                        <div class="mensaje bad">
+                            <p><?= $mensaje_error; ?></p>
+                            <a class="boton"><i class="fas fa-times"></i></a>
+                        </div>
+                    <?php
+                }
             ?>
         </form>
     </div>
-
+    <script src="../script/script.js"></script>
 </body>
 </html>
