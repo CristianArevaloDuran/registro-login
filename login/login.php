@@ -31,7 +31,7 @@
         <h2>Iniciar sesión</h2>
         <form action="" method="post">
             <input type="email" name="email" placeholder="Email">
-            <input type="password" name="contraseña" placeholder="Contraseña">
+            <input type="password" name="password" placeholder="Contraseña">
             <input type="submit" name="login" value="Iniciar sesión">
             <p>o <a href="../registrar/registrar.php">Registrar</a></p>
         </form>
