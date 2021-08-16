@@ -1,0 +1,68 @@
+.formulario {
+    width: 70%;
+    margin: 30px auto 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.formulario h2 {
+    font-size: 30px;
+}
+
+.formulario form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    width: 50%;
+}
+
+.formulario form input[type="email"], .formulario form input[type="password"], .formulario form input[type="name"] {
+    padding: 10px 10px;
+    width: 50%;
+    margin-top: 20px;
+    border: 0;
+    outline: none;
+    border-bottom: 2px solid rgb(72, 144, 226);
+    font-size: 20px;
+}
+
+.formulario form input[type="submit"] {
+    padding: 10px 20px;
+    margin-top: 30px;
+    background-color: rgb(72, 144, 226);
+    border: none;
+    color: #fff;
+    font-size: 20px;
+    outline: none;
+    cursor: pointer;
+    border-radius: 0;
+}
+
+.formulario form input[type="submit"]:hover {
+    background-color: rgb(52, 109, 173);
+}
+
+.formulario form p {
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+.formulario form p a {
+    text-decoration: none;
+    color: rgb(72, 144, 226);
+}
+
+.formulario form p a:hover {
+    color: rgb(52, 109, 173);
+}
+
+.formulario form input:-webkit-autofill,
+.formulario form input:-webkit-autofill:hover {
+    box-shadow: 0 0 0 30px inset white !important;
+    font-size: 20px;
+}

@@ -11,6 +11,8 @@
     <?php
         include("../include/styles-nav-general.html")
     ?>
+    
+    <link rel="stylesheet" href="panel.css">
 
     <!--CSS-->
 
@@ -25,10 +27,14 @@
 
     <!--NAV-->
 
-    <div class="panel">
-        <h2>No has iniciado sesión:</h2>
-        <a href="../login/login.php">Iniciar sesión</a>
-        <a href="../registrar/registrar.php">Registrarse</a>
+    <div class="panel"> 
+        <p>No has iniciado sesión.</p>
+        <div class="panel-links">
+            <a href="../login/login.php">Iniciar sesión</a>
+            <a href="../registrar/registrar.php">Registrarse</a>
+        </div>
     </div>
+
+
 </body>
 </html>

@@ -1,3 +1,10 @@
+
+    <!--Database-->
+        <?php
+            include("../database/dbc.php");
+        ?>
+    <!--Database-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,6 +19,8 @@
         include("../include/styles-nav-general.html")
     ?>
 
+    <link rel="stylesheet" href="../login/formulario.css">
+
     <!--CSS-->
 
 </head>
@@ -25,5 +34,17 @@
 
     <!--NAV-->
     
+    <div class="formulario">
+        <h2>Registrarse</h2>
+        <form action="" method="post">
+            <input type="name" name="nombre" placeholder="Nombre">
+            <input type="email" name="email" placeholder="Email">
+            <input type="password" name="contraseña" placeholder="Contraseña">
+            <input type="password" name="contraseña" placeholder="Confirmar contraseña">
+            <input type="submit" name="login" value="Registrarse">
+            <p>o <a href="../login/login.php">Iniciar sesión</a></p>
+        </form>
+    </div>
+
 </body>
 </html>
