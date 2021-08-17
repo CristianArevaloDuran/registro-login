@@ -67,6 +67,7 @@
                         </div>
                     <?php
                 }
+                include("panel.php");
             ?>
             <?php
     ?>

@@ -32,3 +32,28 @@
 .panel .panel-links a:hover {
     background-color: rgb(52, 109, 173);
 }
+
+.usuarios {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.usuarios .tabla {
+    display: grid;
+    grid-template-columns: 1fr 2fr 3fr;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.usuarios .tabla h2 {
+    justify-self: center;
+}
+
+.usuarios .tabla p {
+    justify-self: center;
+}
+
+.select {
+    color: rgb(72, 144, 226);
+}

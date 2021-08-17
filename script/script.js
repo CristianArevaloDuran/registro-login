@@ -1,6 +1,6 @@
 let div = document.querySelector(".mensaje");
 let boton = document.querySelector(".boton");
-let padre = document.querySelector("body");
+let padre = document.querySelector(".panel");
 let tareas = document.querySelector(".task");
 let tarea = document.querySelector(".detect");
 
