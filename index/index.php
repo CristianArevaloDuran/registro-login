@@ -19,6 +19,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,6 +32,7 @@
     ?>
     
     <link rel="stylesheet" href="panel.css">
+    <link rel="stylesheet" href="../login/formulario.css">
 
     <!--CSS-->
 
@@ -53,8 +55,19 @@
             ?>
             <p>Bienvenido <?= $fila["nombre"]; ?></p>
             <div class="panel-links">
+                <a href="../modificar/modificar.php">Modificar cuenta</a>
                 <a href="../cerrar/cerrar-sesion.php">Cerrar sesión</a>
             </div>
+            <?php
+                if(isset($_GET["mensaje"])) {
+                    ?>
+                        <div class="mensaje ok">
+                            <p><?= $_GET["mensaje"]; ?></p>
+                            <a class="boton"><i class="fas fa-times"></i></a>
+                        </div>
+                    <?php
+                }
+            ?>
             <?php
     ?>
 
@@ -74,6 +87,6 @@
 
     <!--Sesion-->
 
-
+    <script src="../script/script.js"></script>
 </body>
 </html>

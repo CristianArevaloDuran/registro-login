@@ -21,6 +21,10 @@
                 $mensaje_nombre = "Escriba un nombre";
             }
 
+            if(strlen($nombre) > 15) {
+                $mensaje_long_nombre = "La longitud del nombre es demasiado larga";
+            }
+
             $email = $_POST["email"];
 
             if(empty($email)) {
@@ -38,7 +42,7 @@
             } elseif($password != $confirm_password) {
                 $mensaje_coinicide = "Las contraseñas no coinciden";
             } elseif($row = mysqli_fetch_assoc($query)) {
-                $mensaje_correo_existente = "El correo ya se encunetra registrado";
+                $mensaje_correo_existente = "El correo ya se encuentra registrado";
             } elseif(!empty($nombre) && !empty($email) && !empty($password) && !empty($confirm_password)) {
                 $password = password_hash($_POST["password"], PASSWORD_BCRYPT); 
                 $registro = "INSERT INTO login (nombre, email, contraseña) VALUES ('$nombre', '$email', '$password')";
@@ -99,6 +103,11 @@
                 if(isset($mensaje_nombre)) {
                     ?>
                         <p><?= $mensaje_nombre ?></p>
+                    <?php
+                }
+                if(isset($mensaje_long_nombre)) {
+                    ?>
+                        <p><?= $mensaje_long_nombre ?></p>
                     <?php
                 }
                 if(isset($mensaje_email)) {

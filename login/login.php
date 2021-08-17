@@ -17,6 +17,8 @@
         $email = $_POST["email"];
         $password = $_POST["password"];
         if(!empty($email) && !empty($password)) {
+            $correo_inexistente = "SELECT * FROM login WHERE email = '$email'";
+            $query_correo_inexistente = mysqli_query($conexion, $correo_inexistente);
             $login = "SELECT * FROM `login` WHERE email = '$email'";
             $query = mysqli_query($conexion, $login);
             if($fila = mysqli_fetch_assoc($query)) {
@@ -26,11 +28,13 @@
                } else {
                    $mensaje_contraseña_incorrecta = "La contraseña es incorrecta";
                }
+            } elseif(!$row = mysqli_fetch_assoc($query) {
+                $mensaje_correo_inexistente = "El correo no se encuentra registrado"
             } else {
                 echo("Error al conectar");
+            } else {
+                $mensaje_campos_vacios = "Los campos están vacíos";
             }
-        } else {
-            $mensaje_campos_vacios = "Los campos están vacíos";
         }
     }
 ?>
@@ -89,6 +93,14 @@
                     ?>
                     <div class="mensaje bad">
                             <p><?= $mensaje_campos_vacios; ?></p>
+                            <a class="boton"><i class="fas fa-times"></i></a>
+                        </div>
+                    <?php
+                }
+                if(isset($mensaje_correo_inexistente)){
+                    ?>
+                    <div class="mensaje bad">
+                            <p><?= $mensaje_correo_inexistente; ?></p>
                             <a class="boton"><i class="fas fa-times"></i></a>
                         </div>
                     <?php
