@@ -7,6 +7,13 @@
 
     <!--Query de registro-->
     <?php
+
+        session_start();
+
+        if(isset($_SESSION["id_usuario"])) {
+            header("Location: ../index/index.php");
+        }
+
         if(isset($_POST["registro"])) {
             $nombre = $_POST["nombre"];
 
@@ -23,16 +30,21 @@
             $password = $_POST["password"];
             $confirm_password = $_POST["confirm-password"];
 
+            $correo_existente = "SELECT * FROM login WHERE email = '$email'";
+            $query = mysqli_query($conexion, $correo_existente);
+
             if(empty($password) || empty($confirm_password)) {
                 $mensaje_password = "Escriba una contraseña";
             } elseif($password != $confirm_password) {
                 $mensaje_coinicide = "Las contraseñas no coinciden";
+            } elseif($row = mysqli_fetch_assoc($query)) {
+                $mensaje_correo_existente = "El correo ya se encunetra registrado";
             } elseif(!empty($nombre) && !empty($email) && !empty($password) && !empty($confirm_password)) {
                 $password = password_hash($_POST["password"], PASSWORD_BCRYPT); 
                 $registro = "INSERT INTO login (nombre, email, contraseña) VALUES ('$nombre', '$email', '$password')";
                 $query = mysqli_query($conexion, $registro);
                 if($query) {
-                    $mensaje_registro = "Registro satisfactorio"; 
+                    header("Location: ../login/login.php?email=$email");
                 } else {
                     $mensaje_error = "Error al registrar";
                 }
@@ -80,6 +92,9 @@
             <input type="password" name="confirm-password" placeholder="Confirmar contraseña">
             <input type="submit" name="registro" value="Registrarse">
             <p>o <a href="../login/login.php">Iniciar sesión</a></p>
+            
+            <!--Mensajes-->
+            
             <?php
                 if(isset($mensaje_nombre)) {
                     ?>
@@ -101,14 +116,6 @@
                         <p><?= $mensaje_coinicide; ?></p>
                     <?php
                 }
-                if(isset($mensaje_registro)) {
-                    ?>
-                        <div class="mensaje ok">
-                            <p><?= $mensaje_registro; ?></p>
-                            <a class="boton"><i class="fas fa-times"></i></a>
-                        </div>
-                    <?php
-                }
                 if(isset($mensaje_error)) {
                     ?>
                         <div class="mensaje bad">
@@ -116,8 +123,18 @@
                             <a class="boton"><i class="fas fa-times"></i></a>
                         </div>
                     <?php
+                } if(isset($mensaje_correo_existente)) {
+                    ?>
+                        <div class="mensaje bad">
+                            <p><?= $mensaje_correo_existente; ?></p>
+                            <a class="boton"><i class="fas fa-times"></i></a>
+                        </div>
+                    <?php
                 }
-            ?>
+                ?>
+
+            <!--Mensajes-->
+
         </form>
     </div>
     <script src="../script/script.js"></script>
