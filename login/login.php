@@ -28,13 +28,13 @@
                } else {
                    $mensaje_contraseña_incorrecta = "La contraseña es incorrecta";
                }
-            } elseif(!$row = mysqli_fetch_assoc($query) {
-                $mensaje_correo_inexistente = "El correo no se encuentra registrado"
+            } elseif(!$row = mysqli_fetch_assoc($query)) {
+                $mensaje_correo_inexistente = "El correo no se encuentra registrado";
             } else {
                 echo("Error al conectar");
-            } else {
-                $mensaje_campos_vacios = "Los campos están vacíos";
             }
+        } else {
+            $mensaje_campos_vacios = "Los campos están vacíos";
         }
     }
 ?>
